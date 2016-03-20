@@ -1,0 +1,30 @@
+{% extends 'layout-news.html' %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+    {% for subpage in pagination.page_items %}
+        <h2>{{ subpage.title }}</h2>
+        {{ subpage.content_trunc|replace("</body>", "<p>&raquo; <a href=\""+subpage.url+"\">...more</a></p>") }}
+        <span class="submitted">
+            submitted by <span class="author"> <a href="/%7E{{ subpage.author }}" class="wiki" title="~{{ subpage.author }}">{{ subpage.author }}</a></span> on {{ subpage.date }}
+            {% if subpage.tags %}
+                {% for tag in subpage.tags %}
+                    / <a href="/news/{{ tag }}/">{{ tag }}</a>
+                {% endfor %}
+            {% endif %}
+        </span>
+        <hr>
+    {% endfor %}
+    {% if page.pagination %}
+        <div id="paging">
+            {% if page.pagination.prev_page %}
+                <a href="{{ page.pagination.prev_page.url }}">Previous page</a> |
+            {% endif %}
+            Page {{ page.pagination.cur_page }} of {{ page.pagination.num_pages }}
+            {% if page.pagination.next_page %}
+                | <a href="{{ page.pagination.next_page.url }}">Next page</a>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'layout-news.html' %}
+
+{% block title %}{{ page.title }} - News - Source Mage GNU/Linux{% endblock %}
+
+{% block content %}
+    <h2>News based on the tag: '{{ page.title }}'</h2>
+    <table><thead><tr><th> Date </th><th> Caption </th></tr></thead>
+    {% for tagged_page in site.tags[page.title]|sort(true, attribute='date') %}
+        <tr>
+            <td><b>{{ tagged_page.date }}</b></td>
+            <td><a href="{{ tagged_page.url }}">{{ tagged_page.title }}</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

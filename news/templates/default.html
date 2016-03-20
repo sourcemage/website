@@ -1,0 +1,16 @@
+{% extends 'layout-news.html' %}
+
+{% block title %}{{ page.title }} - News - Source Mage GNU/Linux{% endblock %}
+
+{% block content %}
+    <h2>{{ page.title }}</h2>
+    {{ page.content }}
+    <span class="submitted">
+        submitted by <span class="author"> <a href="/%7E{{ page.author }}" class="wiki" title="~{{ page.author }}">{{ page.author }}</a></span> on {{ page.date }}
+        {% if page.tags %}
+            {% for tag in page.tags %}
+                / <a href="/news/{{ tag }}/">{{ tag }}</a>
+            {% endfor %}
+        {% endif %}
+    </span>
+{% endblock %}
