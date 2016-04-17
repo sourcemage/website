@@ -8,9 +8,9 @@ import hatta
 config = hatta.WikiConfig(
     site_name = 'Source Mage GNU/Linux',
     front_page = 'News',
-    pages_path = '/var/www/smgl/pages',
-    cache_path = '/var/www/smgl/cache',
-    template_path = '/var/www/smgl/templates',
+    pages_path = '/srv/www/smgl/pages',
+    cache_path = '/srv/www/smgl/cache',
+    template_path = '/srv/www/smgl/templates',
     pygments_style = 'autumn',
     subdirectories = True
 )
