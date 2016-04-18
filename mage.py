@@ -6,8 +6,7 @@ import re
 from cStringIO import StringIO
 
 from flup.server.fcgi import WSGIServer
-
-import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 
 _FONT_PATH = "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf"
