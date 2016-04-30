@@ -6,7 +6,7 @@ tags: [grimoire]
 ---
 Stable grimoire version 0.62-3 has been released!
 
-After 11 months of polishing we're pleased to announce yet another security update for 0.62 stable branch. This will be one of the latest updates in the series before we go with 0.63, which will bring us GCC 5 and merged xorg-modular grimoire.
+After 11 months of polishing we're pleased to announce yet another security update for 0.62 stable branch. This will be one of the latest updates in the series before we go with 0.63, which will bring us GCC 4.9 and merged xorg-modular grimoire.
 
 But this one is here to fix recent loud security bugs in glibc, openssl, openssh, git, wpa_supplicant, graphite2, ntp, and several others for those who go stable.  
 The release also includes all the work related to our bugzilla spell (and all its dependent Perl modules) update.
