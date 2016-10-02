@@ -18,7 +18,7 @@
       <author>
         <name>{{ subpage.meta.author }}</name>
       </author>
-      <content type="text">{{ subpage.meta.content | striptags | truncate(page.rss.char_limit) }}</content>
+      <content type="text">{{ subpage.meta.content | striptags | truncate(page.rss.char_limit) | e }}</content>
     </entry>
     {%- endif -%}
   {%- endfor %}
