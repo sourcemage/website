@@ -1,4 +1,5 @@
 ^cache$
 ^keys$
 ^news/output$
-.pyc
+^fallback.yml$
+\.pyc$
