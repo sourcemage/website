@@ -1,9 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from flup.server.fcgi import WSGIServer
-from wsgigzip.gzip import GzipMiddleware
 import hatta
+
+from flup.server.fcgi import WSGIServer
+from wsgibrotli.br import BrotliMiddleware
+from wsgigzip.gzip import GzipMiddleware
 
 config = hatta.WikiConfig(
     site_name = 'Source Mage GNU/Linux',
@@ -21,4 +23,4 @@ config.parse_files()
 config.sanitize()
 wiki = hatta.Wiki(config)
 
-WSGIServer(GzipMiddleware(wiki.application)).run()
+WSGIServer(GzipMiddleware(BrotliMiddleware(wiki.application, etag_alter=True))).run()
