@@ -11,7 +11,12 @@
 </head><body><div id="hatta-header"> 
     {% block logo %}{% endblock %}
     {% block search %}{% endblock %}
-    {% block menu %}{% endblock %}
+    <div id="hatta-menu">
+        {% for part in page.menu() %}
+            {{ part|safe }}
+            {% if not loop.last %}<span></span>{%- endif %}
+        {% endfor %}
+    </div>
     {% block page_title %}{% endblock %}
 </div><div id="side-menu"> 
     {% block side_menu %}{% endblock %}
