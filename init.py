@@ -41,6 +41,10 @@ class SMGLWikiPageWiki(hatta.WikiPageWiki):
 
         self.parser = SMGLWikiParser
 
+class SMGLWiki(hatta.Wiki):
+
+    hatta.Wiki.mime_map['text/x-wiki'] = SMGLWikiPageWiki
+
 
 config = hatta.WikiConfig(
     site_name = 'Source Mage GNU/Linux',
@@ -56,7 +60,6 @@ config = hatta.WikiConfig(
 config.parse_args()
 config.parse_files()
 config.sanitize()
-wiki = hatta.Wiki(config)
-wiki.mime_map['text/x-wiki'] = SMGLWikiPageWiki
+wiki = SMGLWiki(config)
 
 WSGIServer(GzipMiddleware(BrotliMiddleware(wiki.application, etag_alter=True))).run()
