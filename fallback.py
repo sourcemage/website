@@ -111,15 +111,21 @@ def index(args=''):
 
     for mirror_id, mirror_url in sorted(servers.items(), key=lambda x: random()):
         url = mirror_url + src
-        req = requests.head(url, allow_redirects=True, timeout=5)
 
-        if req.ok:
-           if not no_redis:
-               red.set(src, mirror_id, ex=conf['redis']['expiration'])
+        try:
+            req = requests.head(url, allow_redirects=True, timeout=5)
 
-           break
+            if req.ok:
+               if not no_redis:
+                   red.set(src, mirror_id, ex=conf['redis']['expiration'])
 
-    if req.ok:
+               break
+        except Exception:
+            req = None
+
+            continue
+
+    if req and req.ok:
         redirect(url)
     else:
         abort(404, "File not found")
