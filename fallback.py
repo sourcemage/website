@@ -116,10 +116,10 @@ def index(args=''):
             req = requests.head(url, allow_redirects=True, timeout=5)
 
             if req.ok:
-               if not no_redis:
-                   red.set(src, mirror_id, ex=conf['redis']['expiration'])
+                if not no_redis:
+                    red.set(src, mirror_id, ex=conf['redis']['expiration'])
 
-               break
+                break
         except Exception:
             req = None
 
