@@ -115,6 +115,9 @@ def index(args=''):
         try:
             req = requests.head(url, allow_redirects=True, timeout=5)
 
+            if req.status_code == 405:
+                req = requests.get(url, allow_redirects=True, timeout=5)
+
             if req.ok:
                 if not no_redis:
                     red.set(src, mirror_id, ex=conf['redis']['expiration'])
